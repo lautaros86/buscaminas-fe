@@ -87,10 +87,26 @@ const Game = () => {
                 icon = ' ';
                 break;
             case '#':
-                icon = '#';
+                icon = '';
                 break;
         }
         return icon;
+    }
+    const getClass = (x: number, y: number) => {
+        const icon = game.board[x][y];
+        let state = '';
+        switch (icon) {
+            case '!':
+                state = 'bomb';
+                break;
+            case '#':
+                state = '';
+                break;
+            default:
+                state = 'selected';
+                break;
+        }
+        return state;
     }
     const generateBoard = () => {
         return (
@@ -102,7 +118,7 @@ const Game = () => {
                                 return (<button key={y}
                                                 onContextMenu={(e) => putFlag(x, y, e)}
                                                 onClick={(event) => actionCell(x, y, event)}
-                                                className={'flex-item'}>{getIcon(x, y)}</button>)
+                                                className={`flex-item ${getClass(x, y)}`}>{getIcon(x, y)}</button>)
                             })
                         }
                     </div>
