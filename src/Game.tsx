@@ -149,8 +149,8 @@ const Game = () => {
                     <div className={'data'}>
                         <span>Codigo: { game ? game.code : ''}</span>
                         <span>Estado: { game?.status}</span>
-                        <span>Cant. Banderas: {cantFlags}</span>
-                        <span>Cant. Bombas: {cantMines}</span>
+                        <span>Cant. Banderas: {game?.flags}</span>
+                        <span>Cant. Bombas: {game?.mines}</span>
                     </div>
                     {generateBoard()}
                 </div>
